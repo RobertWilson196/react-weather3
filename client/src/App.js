@@ -5,11 +5,11 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.setState({
+    this.state = {
       lat: 0,
       lon: 0,
       value: 0
-    });
+    };
     this.handleLat = this.handleLat.bind(this);
     this.handleLon = this.handleLon.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,14 +37,14 @@ class App extends Component {
     e.preventDefault(e);
     console.log('submit');
 
-    const url = `https://api.darksky.net/forecast/(API)/0,0`
-    axios.get(url)
-      .then(res => {
-        console.log('success');
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    // const url = `https://api.darksky.net/forecast/(API)/0,0`
+    // axios.get(url)
+    //   .then(res => {
+    //     console.log('success');
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
   }
 
   render() {
