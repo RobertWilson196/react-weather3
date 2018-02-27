@@ -15,8 +15,6 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  
-
   //Event Handlers
   handleLat(e)
   {
@@ -38,10 +36,8 @@ class App extends Component {
   {
     e.preventDefault(e);
     console.log('submit');
-    require('dotenv').config();
-    const API_KEY = process.env;
 
-    const url = `https://api.darksky.net/forecast/${API_KEY}/0,0`
+    const url = `https://api.darksky.net/forecast/(API)/0,0`
     axios.get(url)
       .then(res => {
         console.log('success');
