@@ -1,8 +1,13 @@
-const express = requires('express'); //import express
-const axios = requires('axios');    //import axios
+const express = require('express'); //import express
+const axios = require('axios');    //import axios
 
 const serverApp = express();    
 const port = process.env.PORT || 5000;
+
+require('dotenv').config();
+const API_KEY = process.env;
+
+
 
 serverApp.get('/forecast/:lat,:lon', function (req, res)
 {

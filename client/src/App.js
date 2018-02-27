@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -8,12 +9,13 @@ class App extends Component {
       lat: 0,
       lon: 0,
       value: 0
-    })
+    });
     this.handleLat = this.handleLat.bind(this);
     this.handleLon = this.handleLon.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  
 
   //Event Handlers
   handleLat(e)
@@ -36,6 +38,17 @@ class App extends Component {
   {
     e.preventDefault(e);
     console.log('submit');
+    require('dotenv').config();
+    const API_KEY = process.env;
+
+    const url = `https://api.darksky.net/forecast/${API_KEY}/0,0`
+    axios.get(url)
+      .then(res => {
+        console.log('success');
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
