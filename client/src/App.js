@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HourlyWeather from './HourlyWeather';
 import { weather } from './services/weather';
+import { isEmptyObject } from './utils';
 import './App.css';
 
 class App extends Component {
@@ -45,11 +46,7 @@ class App extends Component {
       .then(response =>
       {
         console.log('new weather');
-        const weather = response.data;
-        this.setState({
-          hourWeather: weather
-        });
-
+        this.setState({ hourWeather: response.data });
       })
       .catch(error =>
       {
@@ -61,7 +58,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <label>Latitude:</label>
           <input placeholder="Enter Latitude"
@@ -90,7 +87,10 @@ class App extends Component {
           
         </form>
         { this.state.error ? <h1>{this.state.error}</h1> : '' }
-        <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre>
+        {/* <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre> */}
+        {isEmptyObject(this.state.hourWeather) ? "" :
+          <HourlyWeather {...this.state.hourWeather}/> }
+        
 
       </div>
     );

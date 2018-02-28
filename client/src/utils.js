@@ -11,3 +11,5 @@ export const convertTimeStamp = (seconds) =>
  
     return `${hours}:${minutes} ${month}/${day}/${year}` 
 }
+
+export const isEmptyObject = (obj) => Object.keys(obj).length === 0;
