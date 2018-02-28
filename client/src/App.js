@@ -9,12 +9,15 @@ class App extends Component {
     this.state = {
       lat: 0,
       lon: 0,
-      value: 0
+      value: 0,
+      hourWeather: "",
+      error: ""
     };
+
     this.handleLat = this.handleLat.bind(this);
     this.handleLon = this.handleLon.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getWeather = this.getWeather.bind(this);
+
   }
 
   //Event Handlers
@@ -34,24 +37,25 @@ class App extends Component {
     })
   }
 
-  getWeather(lat, lon)
-  {
-    weather(lat,lon)
-      .then( response => 
-      {
-        console.log(response.data.hourly);
-      })
-      .catch( error =>
-      {
-        console.log(error);
-      });
-
-  }
-
   handleSubmit(e)
   {
     e.preventDefault(e);
-    this.getWeather(this.lat, this.lon);
+    console.log('submit');
+    weather(this.state.lat, this.state.lon)
+      .then(response =>
+      {
+        console.log('new weather');
+        const weather = response.data;
+        this.setState({
+          hourWeather: weather
+        });
+
+      })
+      .catch(error =>
+      {
+        console.log(error);
+        this.setState({error: "critical error"})
+      });
 
   }
 
@@ -59,13 +63,13 @@ class App extends Component {
     return (
       <div className="App">
         <form onSubmit={(e) => this.handleSubmit(e)}>
-            {this.getWeather(50,20)};
           <label>Latitude:</label>
           <input placeholder="Enter Latitude"
                  type="number"
                  min="-90"
                  max="90"
-                 step="0.001"
+                 step="0.1"
+                 required
                  value={this.lat}
                  onChange={(e) => this.handleLat(e)} 
                   />
@@ -75,13 +79,19 @@ class App extends Component {
                  type="number"
                  min="-180"
                  max="180"
-                 step="0.001"
+                 step="0.1"
+                 required
                  value={this.lon}
                  onChange={(e) => this.handleLon(e)}
                   />
 
           <button type="submit">Calculate Weather!</button>
+
+          
         </form>
+        { this.state.error ? <h1>{this.state.error}</h1> : '' }
+        <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre>
+
       </div>
     );
   }

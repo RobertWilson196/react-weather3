@@ -3,10 +3,10 @@ import React from 'react';
 const HourlyWeather = (props) => 
 {
     return(
-    <p>
-    Hello
-
-    </p>
+    <ul>
+        <li>Time: {props.time}</li>
+        <li>Temperature: {props.temperature}</li>
+    </ul>
     );
 }
 
