@@ -11,7 +11,7 @@ class App extends Component {
       lat: 0,
       lon: 0,
       value: 0,
-      hourWeather: "",
+      hourWeather: {},
       error: ""
     };
 
@@ -46,7 +46,8 @@ class App extends Component {
       .then(response =>
       {
         console.log('new weather');
-        this.setState({ hourWeather: response.data });
+
+        this.setState({ hourWeather: response.data});
       })
       .catch(error =>
       {
@@ -87,9 +88,10 @@ class App extends Component {
           
         </form>
         { this.state.error ? <h1>{this.state.error}</h1> : '' }
-        {/* <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre> */}
+        <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre>
         {isEmptyObject(this.state.hourWeather) ? "" :
-          <HourlyWeather {...this.state.hourWeather}/> }
+          <HourlyWeather {...this.state.hourWeather}/> 
+          }
         
 
       </div>
