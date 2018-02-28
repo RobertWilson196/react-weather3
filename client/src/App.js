@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import HourlyWeather from './HourlyWeather';
+import { weather } from './services/weather';
 import './App.css';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     this.handleLat = this.handleLat.bind(this);
     this.handleLon = this.handleLon.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getWeather = this.getWeather.bind(this);
   }
 
   //Event Handlers
@@ -32,26 +34,32 @@ class App extends Component {
     })
   }
 
+  getWeather(lat, lon)
+  {
+    weather(lat,lon)
+      .then( response => 
+      {
+        console.log(response.data.hourly);
+      })
+      .catch( error =>
+      {
+        console.log(error);
+      });
+
+  }
+
   handleSubmit(e)
   {
     e.preventDefault(e);
-    console.log('submit');
+    this.getWeather(this.lat, this.lon);
 
-    // const url = `https://api.darksky.net/forecast/(API)/0,0`
-    // axios.get(url)
-    //   .then(res => {
-    //     console.log('success');
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
   }
 
   render() {
     return (
       <div className="App">
         <form onSubmit={(e) => this.handleSubmit(e)}>
-
+            {this.getWeather(50,20)};
           <label>Latitude:</label>
           <input placeholder="Enter Latitude"
                  type="number"

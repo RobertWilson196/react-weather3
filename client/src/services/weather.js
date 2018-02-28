@@ -1,5 +1,6 @@
-// import axios from './axios';
+import axios from 'axios';
 
-// const getCurrentWeather = {
-//     const url = " "
-// }
+export const weather = (latitude, longitude) => {
+    const url = `./forecast/${latitude},${longitude}`;
+    return axios.get(url);
+}
