@@ -13,14 +13,14 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "concurrently \"node server/\" \"cd client && npm start\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RobertWilson196/react-weather3.git",
+    "serve": "concurrently \"node server/\" \"cd client && npm start\"",
     "prod": "cd client && npm run build && cd .. && node server",
     "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "start": "node server/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertWilson196/react-weather3.git"
   },
   "author": "",
   "license": "ISC",
