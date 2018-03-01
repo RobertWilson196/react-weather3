@@ -17,7 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RobertWilson196/react-weather3.git"
+    "url": "git+https://github.com/RobertWilson196/react-weather3.git",
+    "prod": "cd client && npm run build && cd .. && node server",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "start": "node server/"
   },
   "author": "",
   "license": "ISC",

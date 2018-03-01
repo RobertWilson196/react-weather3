@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express'); //import express
 const axios = require('axios');     //import axios
 
@@ -8,6 +9,7 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 // console.log(API_KEY);  
+serverApp.use(express.static('client/build'));
 
 serverApp.get('/forecast/:lat,:lon', function (request, response)
 {
@@ -26,6 +28,11 @@ serverApp.get('/forecast/:lat,:lon', function (request, response)
             response.status(500).json(error)
             console.log(error);
         });
+});
+
+serverApp.get('*', (request, response) => 
+{
+    response.sendFile('index.html', {root: path.resolve('client/build')});
 });
 
 
