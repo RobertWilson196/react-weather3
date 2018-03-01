@@ -9,7 +9,7 @@ export const convertTimeStamp = (seconds) =>
     const month = d.getMonth() + 1;
     const day = d.getDate();
  
-    return `${hours}:${minutes} ${month}/${day}/${year}` 
+    return `${hours} ${month}/${day}/${year}  ` 
 }
 
 export const isEmptyObject = (obj) => Object.keys(obj).length === 0;

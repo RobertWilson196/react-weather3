@@ -88,7 +88,7 @@ class App extends Component {
           
         </form>
         { this.state.error ? <h1>{this.state.error}</h1> : '' }
-        <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre>
+        {/* <pre>{JSON.stringify(this.state.hourWeather, null, 4)}</pre> */}
         {isEmptyObject(this.state.hourWeather) ? "" :
           <HourlyWeather {...this.state.hourWeather}/> 
           }

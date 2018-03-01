@@ -9,7 +9,7 @@ const HourlyWeather = props => {
             {props.data.map((hour, index)=> 
             <li key={index}> 
               Time: {convertTimeStamp(hour.time)}
-                Temperature: {(hour.temperature)}&deg;F
+              Temperature: {(hour.temperature)}&deg;F
             </li>)}
           </ul>
         </li>
