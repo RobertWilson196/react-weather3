@@ -5,11 +5,11 @@ export const convertTimeStamp = (seconds) =>
     const suffix = '';
     if (d.getHours() > 12)
     {
-        const suffix = 'PM';
+       this.suffix = 'PM';
     }
     else
     {
-        const suffix = 'AM';
+        this.suffix = 'AM';
     }
 
     const hours = (d.getHours()%12);
