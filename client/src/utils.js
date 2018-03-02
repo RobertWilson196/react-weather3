@@ -2,17 +2,9 @@ export const convertTimeStamp = (seconds) =>
 {
     const d = new Date(seconds*1000); // s -> ms
     //format : HH:MM mm/dd/YYYY 
-    const suffix = '';
-    if (d.getHours() > 12)
-    {
-       this.suffix = 'PM';
-    }
-    else
-    {
-        this.suffix = 'AM';
-    }
 
     const hours = (d.getHours()%12);
+    const suffix = (d.getHours() > 12) ? 'PM' : 'AM';
     const minutes = d.getMinutes();
 
     const year = d.getFullYear();
