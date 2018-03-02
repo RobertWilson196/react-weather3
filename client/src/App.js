@@ -62,7 +62,7 @@ class App extends Component {
       <div className="container">
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <label>Latitude:</label>
-          <input placeholder="Enter Latitude"
+          <input placeholder="Latitude"
                  type="number"
                  min="-90"
                  max="90"
@@ -73,7 +73,7 @@ class App extends Component {
                   />
 
           <label>Longitude:</label>
-          <input placeholder="Enter Longitude"
+          <input placeholder="Longitude"
                  type="number"
                  min="-180"
                  max="180"
