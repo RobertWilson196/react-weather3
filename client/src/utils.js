@@ -10,7 +10,7 @@ export const convertTimeStamp = (seconds) =>
     {
         const suffix = 'AM';
     }
-    
+
     const hours = (d.getHours()%12);
     const minutes = d.getMinutes();
 
@@ -18,7 +18,7 @@ export const convertTimeStamp = (seconds) =>
     const month = d.getMonth() + 1;
     const day = d.getDate();
  
-    return `${hours} ${month}/${day}/${year}  ` 
+    return `${hours}${suffix} ${month}/${day}/${year}  ` 
 }
 
 export const isEmptyObject = (obj) => Object.keys(obj).length === 0;
